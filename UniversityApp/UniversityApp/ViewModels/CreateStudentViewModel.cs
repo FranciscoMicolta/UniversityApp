@@ -56,6 +56,7 @@ namespace UniversityApp.ViewModels
 
             this.IsRunning = false;
             this.IsEnabled = true;
+            this.EnrollmentDate = DateTime.UtcNow;
         }
 
         public Command SaveCommand { get; set; }
@@ -94,9 +95,7 @@ namespace UniversityApp.ViewModels
 
                 this.LastName = string.Empty;
                 this.FirstMidName = string.Empty;
-                this.EnrollmentDate = DateTime.UtcNow;
-                Application.Current.MainPage = new NavigationPage(new StudentsPage());
-
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception ex)
             {

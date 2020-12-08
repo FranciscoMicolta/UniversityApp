@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using UniversityApp.BL.DTOs;
 using UniversityApp.BL.Services.Implements;
 using UniversityApp.Helpers;
-using UniversityApp.Views;
 using Xamarin.Forms;
 
 namespace UniversityApp.ViewModels
@@ -54,6 +53,7 @@ namespace UniversityApp.ViewModels
 
             this.IsRunning = false;
             this.IsEnabled = true;
+            this.HireDate = DateTime.UtcNow;
         }
 
         public Command SaveCommand { get; set; }
@@ -92,8 +92,7 @@ namespace UniversityApp.ViewModels
 
                 this.LastName = string.Empty;
                 this.FirstMidName = string.Empty;
-                this.HireDate = DateTime.UtcNow;
-                Application.Current.MainPage = new NavigationPage(new InstructorsPage());
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception ex)
             {
